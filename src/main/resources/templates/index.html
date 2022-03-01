@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script th:src="@{/js/main.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Currency convertor</title>
+</head>
+<body>
+<div class="total">
+    <div class="card">
+        <div class="cardTitle">
+            <h2>Currency convertor</h2>
+        </div>
+        <div class="cardBody">
+            <form id="convertorForm" autocomplete="off">
+                <label for="firstCurrency">First currency:</label><br>
+                <select id="firstCurrency">
+                    <th:block th:each="currency : ${currencies}">
+                        <option th:value="${currency}" th:text="${currency}"></option>
+                    </th:block>
+                </select>
+                <br>
+                <label for="secondCurrency">Second currency:</label><br>
+                <select id="secondCurrency">
+                    <th:block th:each="currency : ${currencies}">
+                        <option th:value="${currency}" th:text="${currency}"></option>
+                    </th:block>
+                </select>
+                <br>
+                <input type="number" id="amountInput" placeholder="Amount" min ="0">
+            </form><br>
+            <div class ="buttons">
+            <button type="button" class="swapButton" onclick="swapCurrencies()">
+                    <span class="material-icons md-36">
+                        swap_horiz
+                    </span>
+            </button>
+            <button class="button" onclick="convert()">Convert!</button>
+            </div>
+            <h2 id="valueResult"></h2>
+        </div>
+    </div>
+</div>
+</body>
+</html>
